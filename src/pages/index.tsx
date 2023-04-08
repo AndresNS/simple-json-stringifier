@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 
 import Layout from "@/components/layouts/Default";
-import { ConvertMode } from "../types/global.d";
+// import { ConvertMode } from "../types/global.d";
 
 export default function Home() {
-  const [convertMode, setConvertMode] = useState(ConvertMode.JSONtoString);
+  // const [convertMode, setConvertMode] = useState(ConvertMode.JSONtoString);
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [error, setError] = useState("");
@@ -47,11 +47,12 @@ export default function Home() {
         <div className="container mx-auto">
           <div className="flex gap-4">
             <div className="text-white flex-1">
-              <h3 className="mb-2">
+              <h3 className="mb-2">JSON</h3>
+              {/* <h3 className="mb-2">
                 {convertMode === ConvertMode.JSONtoString
                   ? "JSON"
                   : "Stringified JSON"}
-              </h3>
+              </h3> */}
               {/* <h3 className="mb-2">
                 {convertMode === ConvertMode.JSONtoString
                   ? "JSON"
@@ -85,11 +86,12 @@ export default function Home() {
               </button>
             </div> */}
             <div className="text-white flex-1">
-              <h3 className="mb-2">
+              <h3 className="mb-2">Stringified JSON</h3>
+              {/* <h3 className="mb-2">
                 {convertMode === ConvertMode.JSONtoString
                   ? "Stringified JSON"
                   : "JSON"}
-              </h3>
+              </h3> */}
               <textarea
                 className="w-full rounded p-2 text-black"
                 rows={20}
