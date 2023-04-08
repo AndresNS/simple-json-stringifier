@@ -15,6 +15,12 @@ B: Nuevas características, nuevas funcionalidades y conjunto de grandes correcc
 C: Correcciones de bugs de la serie B.
 -->
 
+## [1.1.0] 08/04/2023
+
+### Added
+
+- Add button to toggle light/dark mode.
+
 ## [1.0.0] 08/04/2023
 
 ### Added
