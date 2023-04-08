@@ -4,7 +4,7 @@ import Header from "@/components/sections/Header";
 
 const Layout = ({ children }: PropsWithChildren) => {
   return (
-    <div className="bg-slate-700 min-h-screen">
+    <div className="bg-slate-300 dark:bg-slate-700 text-black min-h-screen">
       <Head>
         <title>Simple JSON Stringify</title>
         <meta property="og:title" content="Simple JSON Stringify" key="title" />

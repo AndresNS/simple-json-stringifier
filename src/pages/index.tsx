@@ -46,8 +46,8 @@ export default function Home() {
       <section className="mt-8 px-8">
         <div className="container mx-auto">
           <div className="flex gap-4">
-            <div className="text-white flex-1">
-              <h3 className="mb-2">JSON</h3>
+            <div className="flex-1">
+              <h3 className="mb-2 dark:text-white">JSON</h3>
               {/* <h3 className="mb-2">
                 {convertMode === ConvertMode.JSONtoString
                   ? "JSON"
@@ -59,13 +59,13 @@ export default function Home() {
                   : "Stringified JSON"}
               </h3> */}
               <textarea
-                className="w-full rounded p-2 text-black"
+                className="w-full rounded p-2 dark:bg-zinc-800 dark:text-white resize-none"
                 rows={20}
                 spellCheck={false}
                 onChange={handleInputChange}
                 value={input}
               />
-              <p>{error}</p>
+              <p className="dark:text-white">{error}</p>
             </div>
             {/* <div className="text-white">
               <button onClick={handleChangeMode}>
@@ -85,15 +85,15 @@ export default function Home() {
                 </svg>
               </button>
             </div> */}
-            <div className="text-white flex-1">
-              <h3 className="mb-2">Stringified JSON</h3>
+            <div className="flex-1">
+              <h3 className="mb-2 dark:text-white">Stringified JSON</h3>
               {/* <h3 className="mb-2">
                 {convertMode === ConvertMode.JSONtoString
                   ? "Stringified JSON"
                   : "JSON"}
               </h3> */}
               <textarea
-                className="w-full rounded p-2 text-black"
+                className="w-full rounded p-2 dark:bg-zinc-800 dark:text-white resize-none"
                 rows={20}
                 spellCheck={false}
                 value={output}
