@@ -15,6 +15,10 @@ B: Nuevas características, nuevas funcionalidades y conjunto de grandes correcc
 C: Correcciones de bugs de la serie B.
 -->
 
+## Unreleased
+
+- Change title from "Simple JSON Stringify" to "Simple JSON Stringifier".
+
 ## [1.1.0] 08/04/2023
 
 ### Added

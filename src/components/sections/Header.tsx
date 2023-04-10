@@ -45,7 +45,7 @@ const Header = () => {
   return (
     <header className="bg-slate-600 dark:bg-slate-800 text-white py-4 px-8">
       <div className="container mx-auto flex justify-between">
-        <div>Simple JSON Stringify</div>
+        <div>Simple JSON Stringifier</div>
         <div>
           <button className="cursor-pointer flex" onClick={handleChangeTheme}>
             {theme === ColorScheme.Dark ? (

@@ -6,13 +6,17 @@ const Layout = ({ children }: PropsWithChildren) => {
   return (
     <div className="bg-slate-300 dark:bg-slate-700 text-black min-h-screen">
       <Head>
-        <title>Simple JSON Stringify</title>
-        <meta property="og:title" content="Simple JSON Stringify" key="title" />
+        <title>Simple JSON Stringifier</title>
+        <meta
+          property="og:title"
+          content="Simple JSON Stringifier"
+          key="title"
+        />
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           name="keywords"
-          content="JSON, JSON Stringify, JSON Parse, JSON Tool"
+          content="JSON, JSON Stringify, JSON Stringifier, JSON Parse, JSON Tool"
         />
         <meta
           name="description"
