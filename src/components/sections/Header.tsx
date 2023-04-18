@@ -21,11 +21,11 @@ const Header = () => {
     }
   }, []);
 
-  const handleChangeTheme = () => {
+  const handleChangeTheme = (): void => {
     toggleColorScheme();
   };
 
-  const toggleColorScheme = () => {
+  const toggleColorScheme = (): void => {
     if (typeof window === "undefined") return;
     const userColorScheme = window.localStorage.getItem("color-scheme");
 
