@@ -45,7 +45,7 @@ export default function Home() {
     <Layout>
       <section className="mt-8 px-8">
         <div className="container mx-auto">
-          <div className="flex gap-4">
+          <div className="flex gap-4 flex-col md:flex-row">
             <div className="flex-1">
               <h3 className="mb-2 dark:text-white">JSON</h3>
               {/* <h3 className="mb-2">
