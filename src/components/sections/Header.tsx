@@ -4,9 +4,11 @@ import ThemeSwitch from "../modules/ThemeSwitch";
 
 const Header = () => {
   return (
-    <header className="bg-slate-600 dark:bg-slate-800 text-white py-4 px-8">
+    <header className="bg-slate-600/5 text-slate-600 dark:bg-zinc-900 dark:text-zinc-200 py-6 px-8">
       <div className="container mx-auto flex justify-between">
-        <div>Simple JSON Stringifier</div>
+        <div className="font-roboto font-bold text-lg">
+          Simple JSON Stringifier
+        </div>
         <div>
           <ThemeSwitch />
         </div>

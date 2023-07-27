@@ -1,10 +1,11 @@
 import { PropsWithChildren } from "react";
 import Head from "next/head";
 import Header from "@/components/sections/Header";
+import Footer from "@/components/sections/Footer";
 
 const Layout = ({ children }: PropsWithChildren) => {
   return (
-    <div className="bg-red-500 dark:bg-slate-700 text-black min-h-screen">
+    <div className="flex flex-col min-h-screen">
       <Head>
         <title>Simple JSON Stringifier</title>
         <meta
@@ -24,7 +25,8 @@ const Layout = ({ children }: PropsWithChildren) => {
         />
       </Head>
       <Header />
-      {children}
+      <div className="flex-1">{children}</div>
+      <Footer />
     </div>
   );
 };
