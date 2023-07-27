@@ -43,7 +43,7 @@ export default function Home() {
 
   return (
     <Layout>
-      <section className="mt-8 px-8">asd</section>
+      <section className="mt-8 px-8">zxczxc</section>
     </Layout>
   );
 }
