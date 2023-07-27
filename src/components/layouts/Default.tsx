@@ -4,7 +4,7 @@ import Header from "@/components/sections/Header";
 
 const Layout = ({ children }: PropsWithChildren) => {
   return (
-    <div className="bg-slate-300 dark:bg-slate-700 text-black min-h-screen">
+    <div className="bg-red-500 dark:bg-slate-700 text-black min-h-screen">
       <Head>
         <title>Simple JSON Stringifier</title>
         <meta
