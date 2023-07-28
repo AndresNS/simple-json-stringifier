@@ -51,7 +51,7 @@ export default function Home() {
           <div className="flex-1">
             <CodeEditor title="JSON" />
           </div>
-          <button className="bg-slate-200 text-slate-600 dark:bg-zinc-900 dark:text-zinc-200 flex justify-center items-center rounded hover:bg-slate-400 hover:text-slate-100 dark:hover:bg-slate-600 p-2">
+          <button className="bg-slate-200 text-slate-600 dark:bg-zinc-900 dark:text-zinc-200 flex justify-center items-center rounded hover:bg-slate-400 hover:text-slate-100 dark:hover:bg-slate-600 p-2 drop-shadow-md">
             <SwapIcon />
           </button>
           <div className="flex-1">
