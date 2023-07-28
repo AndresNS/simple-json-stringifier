@@ -38,7 +38,7 @@ const Background = ({ children }: PropsWithChildren) => {
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
         stroke="none"
-        className="text-teal-100/50 dark:text-slate-900/50 w-1/2 absolute blur-[8rem] "
+        className="text-teal-100/40 dark:text-slate-900/50 w-1/2 absolute blur-[8rem] "
       >
         <path
           fillRule="evenodd"

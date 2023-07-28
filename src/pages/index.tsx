@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import Layout from "@/components/layouts/Default";
 // import { ConvertMode } from "../types/global.d";
 
+import CodeEditor from "@/components/modules/CodeEditor/CodeEditor";
+
 export default function Home() {
   // const [convertMode, setConvertMode] = useState(ConvertMode.JSONtoString);
   const [input, setInput] = useState("");
@@ -43,7 +45,16 @@ export default function Home() {
 
   return (
     <Layout>
-      <section className="mt-8 px-8">zxczxc</section>
+      <section className="container mx-auto flex flex-col justify-center">
+        <div className="flex gap-4">
+          <div className="flex-1">
+            <CodeEditor title="JSON" />
+          </div>
+          <div className="flex-1">
+            <CodeEditor title="Stringified JSON" />
+          </div>
+        </div>
+      </section>
     </Layout>
   );
 }

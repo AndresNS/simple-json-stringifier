@@ -8,4 +8,12 @@ enum ColorScheme {
   Light = "light",
 }
 
-export { ConvertMode, ColorScheme };
+enum IconVariant {
+  beautify,
+  copy,
+  delete,
+  error,
+  uglify,
+}
+
+export { ConvertMode, ColorScheme, IconVariant };
