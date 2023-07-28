@@ -9,7 +9,7 @@ const Background = ({ children }: PropsWithChildren) => {
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
         stroke="none"
-        className="text-sky-100 dark:text-teal-600/70 w-1/2 absolute bottom-[-20%] left-[10%] blur-[8rem] "
+        className="text-teal-50 dark:text-teal-600/70 w-1/2 absolute bottom-[-20%] left-[10%] blur-[8rem] "
       >
         <path
           fillRule="evenodd"
@@ -24,7 +24,7 @@ const Background = ({ children }: PropsWithChildren) => {
         fill="currentColor"
         stroke="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="text-purple-50 dark:text-sky-900/70 w-1/2 right-[-5%] absolute blur-[8rem]"
+        className="text-sky-50 dark:text-sky-900/70 w-1/2 right-[-5%] absolute blur-[8rem]"
       >
         <path
           fillRule="evenodd"
@@ -38,7 +38,7 @@ const Background = ({ children }: PropsWithChildren) => {
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
         stroke="none"
-        className="text-teal-100/40 dark:text-slate-900/50 w-1/2 absolute blur-[8rem] "
+        className="text-purple-50 dark:text-slate-900/50 w-1/2 absolute blur-[8rem] "
       >
         <path
           fillRule="evenodd"

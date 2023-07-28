@@ -4,6 +4,7 @@ import Layout from "@/components/layouts/Default";
 // import { ConvertMode } from "../types/global.d";
 
 import CodeEditor from "@/components/modules/CodeEditor/CodeEditor";
+import SwapIcon from "../components/icons/SwapIcon";
 
 export default function Home() {
   // const [convertMode, setConvertMode] = useState(ConvertMode.JSONtoString);
@@ -46,10 +47,13 @@ export default function Home() {
   return (
     <Layout>
       <section className="container mx-auto flex flex-col justify-center">
-        <div className="flex gap-4">
+        <div className="flex gap-4 items-center">
           <div className="flex-1">
             <CodeEditor title="JSON" />
           </div>
+          <button className="bg-slate-200 text-slate-600 dark:bg-zinc-900 dark:text-zinc-200 flex justify-center items-center rounded hover:bg-slate-400 hover:text-slate-100 dark:hover:bg-slate-600 p-2">
+            <SwapIcon />
+          </button>
           <div className="flex-1">
             <CodeEditor title="Stringified JSON" />
           </div>
