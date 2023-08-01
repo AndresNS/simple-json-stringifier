@@ -1,29 +1,40 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 import Layout from "@/components/layouts/Default";
-import { Formats } from "@/types/global.d";
+import { ConvertMode, Formats } from "@/types/global.d";
 
 import CodeEditor from "@/components/modules/CodeEditor/CodeEditor";
 import SwapIcon from "../components/icons/SwapIcon";
 
 export default function Home() {
   const [input, setInput] = useState("");
-  const [output, setOutput] = useState("");
   const [inputError, setInputError] = useState(false);
+  const [convertMode, setConvertMode] = useState(ConvertMode.JSONtoString);
 
-  // const [convertMode, setConvertMode] = useState(ConvertMode.JSONtoString);
+  const getOutputContent = (
+    input: string,
+    convertMode: ConvertMode
+  ): string => {
+    if (input === "") return "";
 
-  const toggleConvertMode = () => {};
+    switch (convertMode) {
+      case ConvertMode.JSONtoString:
+        return JSON.stringify(input);
 
-  // const toggleConvertMode = (mode: ConvertMode): void => {
-  //   setConvertMode(
-  //     mode === ConvertMode.JSONtoString
-  //       ? ConvertMode.StringtoJSON
-  //       : ConvertMode.JSONtoString
-  //   );
-  // };
+      case ConvertMode.StringtoJSON:
+        return JSON.parse(input);
+    }
+  };
 
-  // const handleChangeMode = (): void => toggleConvertMode(convertMode);
+  const toggleConvertMode = (mode: ConvertMode): void => {
+    setInput(getOutputContent(input, mode));
+
+    setConvertMode(
+      mode === ConvertMode.JSONtoString
+        ? ConvertMode.StringtoJSON
+        : ConvertMode.JSONtoString
+    );
+  };
 
   return (
     <Layout>
@@ -31,28 +42,46 @@ export default function Home() {
         <div className="flex gap-4 items-center flex-col lg:flex-row">
           <div className="flex-1 w-full">
             <CodeEditor
-              title="JSON"
+              title={
+                convertMode === ConvertMode.JSONtoString
+                  ? "JSON"
+                  : "Stringified JSON"
+              }
               content={input}
               setContent={setInput}
               error={inputError}
               setError={setInputError}
-              format={Formats.json}
+              format={
+                convertMode === ConvertMode.JSONtoString
+                  ? Formats.json
+                  : Formats.string
+              }
+              convertMode={convertMode}
             />
           </div>
           <button
             className="w-full lg:w-auto bg-slate-200 text-slate-600 dark:bg-zinc-900 dark:text-zinc-200 flex justify-center items-center rounded hover:bg-slate-400 hover:text-slate-100 dark:hover:bg-slate-600 p-2 drop-shadow-md"
-            onClick={toggleConvertMode}
+            onClick={() => toggleConvertMode(convertMode)}
           >
             <SwapIcon />
           </button>
           <div className="flex-1  w-full">
             <CodeEditor
-              title="Stringified JSON"
-              content={output}
-              setContent={setOutput}
+              title={
+                convertMode === ConvertMode.StringtoJSON
+                  ? "JSON"
+                  : "Stringified JSON"
+              }
+              content={getOutputContent(input, convertMode)}
+              // setContent={setOutput}
               error={null}
               setError={null}
-              format={Formats.string}
+              format={
+                convertMode === ConvertMode.StringtoJSON
+                  ? Formats.json
+                  : Formats.string
+              }
+              convertMode={convertMode}
             />
           </div>
         </div>

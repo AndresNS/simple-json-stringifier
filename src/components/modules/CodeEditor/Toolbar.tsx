@@ -1,28 +1,35 @@
 import ToolbarButton from "./ToolbarButton";
-import { IconVariant } from "../../../types/global.d";
+import { ConvertMode, IconVariant } from "@/types/global.d";
 
 interface IToolbarProps {
   title: string;
   content: string;
-  setContent: React.Dispatch<React.SetStateAction<string>>;
+  setContent?: React.Dispatch<React.SetStateAction<string>>;
   error: boolean;
+  isOutput: boolean;
 }
 
-const Toolbar = ({ title, content, setContent, error }: IToolbarProps) => {
+const Toolbar = ({
+  title,
+  content,
+  setContent,
+  error,
+  isOutput,
+}: IToolbarProps) => {
   const handleBeautifyClick = (): void => {
     if (error) "Fix errors first";
     else
-      setContent((content) => {
+      setContent?.((content) => {
         const parsedContent = JSON.parse(content);
         return JSON.stringify(parsedContent, null, 4);
       });
   };
 
   const handleUglifyClick = () => {
-    setContent(JSON.stringify(JSON.parse(content)));
+    setContent?.(JSON.stringify(JSON.parse(content)));
   };
 
-  const handleDeleteClick = () => setContent("");
+  const handleDeleteClick = () => setContent?.("");
 
   const handleCopyClick = () => navigator.clipboard.writeText(content);
 
@@ -36,18 +43,22 @@ const Toolbar = ({ title, content, setContent, error }: IToolbarProps) => {
           </div>
         )}
 
-        <ToolbarButton
-          variant={IconVariant.beautify}
-          onClick={handleBeautifyClick}
-        />
-        <ToolbarButton
-          variant={IconVariant.uglify}
-          onClick={handleUglifyClick}
-        />
-        <ToolbarButton
-          variant={IconVariant.delete}
-          onClick={handleDeleteClick}
-        />
+        {!isOutput && (
+          <>
+            <ToolbarButton
+              variant={IconVariant.beautify}
+              onClick={handleBeautifyClick}
+            />
+            <ToolbarButton
+              variant={IconVariant.uglify}
+              onClick={handleUglifyClick}
+            />
+            <ToolbarButton
+              variant={IconVariant.delete}
+              onClick={handleDeleteClick}
+            />
+          </>
+        )}
         <ToolbarButton variant={IconVariant.copy} onClick={handleCopyClick} />
       </div>
     </div>
