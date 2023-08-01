@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import { useState, Dispatch, SetStateAction } from "react";
 
 import { Formats, ConvertMode } from "@/types/global.d";
 
@@ -23,20 +23,41 @@ const CodeEditor = ({
   format,
   convertMode,
 }: ICodeEditorProps) => {
+  const [errorMessage, setErrorMessage] = useState("");
+
   const isValidJSON = (value: string): boolean => {
     try {
       JSON.parse(value);
-    } catch {
+    } catch (error: any) {
+      setErrorMessage(error.toString());
       return false;
     }
 
     return true;
   };
 
+  const isValidString = (value: string): boolean => {
+    try {
+      JSON.parse(value);
+    } catch (error: any) {
+      setErrorMessage(error.toString());
+      return false;
+    }
+
+    return true;
+  };
+
+  const validateInput = (input: string, convertMode: ConvertMode): void => {
+    if (convertMode === ConvertMode.JSONtoString)
+      setError?.(!isValidJSON(input));
+    if (convertMode === ConvertMode.StringtoJSON)
+      setError?.(!isValidString(input));
+  };
+
   const handleTextAreaChange = (
     event: React.ChangeEvent<HTMLTextAreaElement>
   ): void => {
-    setError?.(!isValidJSON(event.target.value));
+    validateInput(event.target.value, convertMode);
     setContent?.(event.target.value);
   };
 
@@ -51,6 +72,7 @@ const CodeEditor = ({
         content={content}
         setContent={setContent}
         error={error !== null && content !== "" ? error : false}
+        errorMessage={errorMessage}
         isOutput={isOutput()}
       />
       <textarea

@@ -26,7 +26,7 @@ const ToolbarButton = ({ variant, error, onClick }: IToolbarButtonProps) => {
       className={`p-1 flex justify-center items-center ${
         error
           ? "text-xs rounded-full text-zinc-200 bg-red-700 hover:bg-red-600 dark:bg-red-800 dark:hover:bg-red-700"
-          : "rounded hover:bg-slate-400 hover:text-slate-100 dark:hover:bg-slate-600"
+          : "rounded hover:bg-cyan-600 hover:text-slate-100 dark:hover:bg-slate-600"
       }`}
       onClick={onClick}
     >

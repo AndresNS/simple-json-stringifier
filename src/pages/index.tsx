@@ -1,10 +1,11 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 
 import Layout from "@/components/layouts/Default";
 import { ConvertMode, Formats } from "@/types/global.d";
 
 import CodeEditor from "@/components/modules/CodeEditor/CodeEditor";
-import SwapIcon from "../components/icons/SwapIcon";
+import SwapIcon from "@/components/icons/SwapIcon";
+import Tooltip from "@/components/modules/Tooltip";
 
 export default function Home() {
   const [input, setInput] = useState("");
@@ -13,9 +14,10 @@ export default function Home() {
 
   const getOutputContent = (
     input: string,
-    convertMode: ConvertMode
+    convertMode: ConvertMode,
+    error: boolean
   ): string => {
-    if (input === "") return "";
+    if (input === "" || error) return "";
 
     switch (convertMode) {
       case ConvertMode.JSONtoString:
@@ -27,7 +29,7 @@ export default function Home() {
   };
 
   const toggleConvertMode = (mode: ConvertMode): void => {
-    setInput(getOutputContent(input, mode));
+    setInput(getOutputContent(input, mode, inputError));
 
     setConvertMode(
       mode === ConvertMode.JSONtoString
@@ -59,12 +61,14 @@ export default function Home() {
               convertMode={convertMode}
             />
           </div>
-          <button
-            className="w-full lg:w-auto bg-slate-200 text-slate-600 dark:bg-zinc-900 dark:text-zinc-200 flex justify-center items-center rounded hover:bg-slate-400 hover:text-slate-100 dark:hover:bg-slate-600 p-2 drop-shadow-md"
-            onClick={() => toggleConvertMode(convertMode)}
-          >
-            <SwapIcon />
-          </button>
+          <Tooltip text={"Toggle Mode"}>
+            <button
+              className="w-full lg:w-auto bg-cyan-700 text-slate-100 dark:bg-zinc-900 dark:text-zinc-200 flex justify-center items-center rounded hover:bg-cyan-600 hover:text-slate-100 dark:hover:bg-slate-600 p-2 drop-shadow-md"
+              onClick={() => toggleConvertMode(convertMode)}
+            >
+              <SwapIcon />
+            </button>{" "}
+          </Tooltip>
           <div className="flex-1  w-full">
             <CodeEditor
               title={
@@ -72,8 +76,7 @@ export default function Home() {
                   ? "JSON"
                   : "Stringified JSON"
               }
-              content={getOutputContent(input, convertMode)}
-              // setContent={setOutput}
+              content={getOutputContent(input, convertMode, inputError)}
               error={null}
               setError={null}
               format={

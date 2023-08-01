@@ -1,5 +1,7 @@
 import ToolbarButton from "./ToolbarButton";
-import { ConvertMode, IconVariant } from "@/types/global.d";
+import { IconVariant } from "@/types/global.d";
+import Tooltip from "@/components/modules/Tooltip";
+import Popover from "@/components/modules/Popover";
 
 interface IToolbarProps {
   title: string;
@@ -7,6 +9,7 @@ interface IToolbarProps {
   setContent?: React.Dispatch<React.SetStateAction<string>>;
   error: boolean;
   isOutput: boolean;
+  errorMessage: string;
 }
 
 const Toolbar = ({
@@ -15,6 +18,7 @@ const Toolbar = ({
   setContent,
   error,
   isOutput,
+  errorMessage,
 }: IToolbarProps) => {
   const handleBeautifyClick = (): void => {
     if (error) "Fix errors first";
@@ -34,32 +38,41 @@ const Toolbar = ({
   const handleCopyClick = () => navigator.clipboard.writeText(content);
 
   return (
-    <div className="bg-slate-200 text-slate-600 dark:bg-zinc-900 dark:text-zinc-200 px-6 py-2 rounded-t-xl flex justify-between items-center">
+    <div className="bg-cyan-700 text-slate-100 dark:bg-zinc-900 dark:text-zinc-200 px-6 py-2 rounded-t-xl flex justify-between items-center">
       <div className="font-roboto font-bold">{title}</div>
       <div className="flex gap-2">
         {error && (
           <div className="mr-2">
-            <ToolbarButton variant={IconVariant.error} error={error} />
+            <Popover text={errorMessage}>
+              <ToolbarButton variant={IconVariant.error} error={error} />
+            </Popover>
           </div>
         )}
-
         {!isOutput && (
           <>
-            <ToolbarButton
-              variant={IconVariant.beautify}
-              onClick={handleBeautifyClick}
-            />
-            <ToolbarButton
-              variant={IconVariant.uglify}
-              onClick={handleUglifyClick}
-            />
-            <ToolbarButton
-              variant={IconVariant.delete}
-              onClick={handleDeleteClick}
-            />
+            <Tooltip text={"Beautify"}>
+              <ToolbarButton
+                variant={IconVariant.beautify}
+                onClick={handleBeautifyClick}
+              />
+            </Tooltip>
+            <Tooltip text={"Uglify"}>
+              <ToolbarButton
+                variant={IconVariant.uglify}
+                onClick={handleUglifyClick}
+              />
+            </Tooltip>
+            <Tooltip text={"Clear"}>
+              <ToolbarButton
+                variant={IconVariant.delete}
+                onClick={handleDeleteClick}
+              />
+            </Tooltip>
           </>
         )}
-        <ToolbarButton variant={IconVariant.copy} onClick={handleCopyClick} />
+        <Tooltip text={"Copy"}>
+          <ToolbarButton variant={IconVariant.copy} onClick={handleCopyClick} />
+        </Tooltip>
       </div>
     </div>
   );
