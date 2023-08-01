@@ -20,6 +20,7 @@ C: Correcciones de bugs de la serie B.
 ### Added
 
 - Added error details.
+- Added button to toggle between JSON to String and String to JSON.
 
 ### Changed
 
