@@ -17,16 +17,28 @@ C: Correcciones de bugs de la serie B.
 
 ## Unreleased
 
-- Change title from "Simple JSON Stringify" to "Simple JSON Stringifier".
+### Added
+
+- Added error details.
+
+### Changed
+
+- Implemented new UI design.
+- Changed title from "Simple JSON Stringify" to "Simple JSON Stringifier".
+- Improveed mobile version.
+
+# Fixed
+
+- Fixed bug that causes a flash of light mode when page loads and dark mode is enabled.
 
 ## [1.1.0] 08/04/2023
 
 ### Added
 
-- Add button to toggle light/dark mode.
+- Added button to toggle light/dark mode.
 
 ## [1.0.0] 08/04/2023
 
 ### Added
 
-- Add feature to convert a JSON formated string to a valid stringified JSON.
+- Added feature to convert a JSON formated string to a valid stringified JSON.

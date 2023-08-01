@@ -1,23 +1,19 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import Layout from "@/components/layouts/Default";
-// import { ConvertMode } from "../types/global.d";
+import { Formats } from "@/types/global.d";
 
 import CodeEditor from "@/components/modules/CodeEditor/CodeEditor";
 import SwapIcon from "../components/icons/SwapIcon";
 
 export default function Home() {
-  // const [convertMode, setConvertMode] = useState(ConvertMode.JSONtoString);
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
-  const [error, setError] = useState("");
+  const [inputError, setInputError] = useState(false);
 
-  useEffect(() => {
-    if (input !== "" && !validateJSON(input))
-      return setError("Not a valid JSON");
-    setOutput(JSON.stringify(input));
-    setError("");
-  }, [input]);
+  // const [convertMode, setConvertMode] = useState(ConvertMode.JSONtoString);
+
+  const toggleConvertMode = () => {};
 
   // const toggleConvertMode = (mode: ConvertMode): void => {
   //   setConvertMode(
@@ -29,33 +25,35 @@ export default function Home() {
 
   // const handleChangeMode = (): void => toggleConvertMode(convertMode);
 
-  const handleInputChange = (
-    event: React.ChangeEvent<HTMLTextAreaElement>
-  ): void => {
-    setInput(event.target.value);
-  };
-
-  const validateJSON = (value: string): boolean => {
-    try {
-      JSON.parse(value);
-    } catch {
-      return false;
-    }
-    return true;
-  };
-
   return (
     <Layout>
-      <section className="container mx-auto flex flex-col justify-center">
-        <div className="flex gap-4 items-center">
-          <div className="flex-1">
-            <CodeEditor title="JSON" />
+      <section className="container p-6 mx-auto flex flex-col justify-center">
+        <div className="flex gap-4 items-center flex-col lg:flex-row">
+          <div className="flex-1 w-full">
+            <CodeEditor
+              title="JSON"
+              content={input}
+              setContent={setInput}
+              error={inputError}
+              setError={setInputError}
+              format={Formats.json}
+            />
           </div>
-          <button className="bg-slate-200 text-slate-600 dark:bg-zinc-900 dark:text-zinc-200 flex justify-center items-center rounded hover:bg-slate-400 hover:text-slate-100 dark:hover:bg-slate-600 p-2 drop-shadow-md">
+          <button
+            className="w-full lg:w-auto bg-slate-200 text-slate-600 dark:bg-zinc-900 dark:text-zinc-200 flex justify-center items-center rounded hover:bg-slate-400 hover:text-slate-100 dark:hover:bg-slate-600 p-2 drop-shadow-md"
+            onClick={toggleConvertMode}
+          >
             <SwapIcon />
           </button>
-          <div className="flex-1">
-            <CodeEditor title="Stringified JSON" />
+          <div className="flex-1  w-full">
+            <CodeEditor
+              title="Stringified JSON"
+              content={output}
+              setContent={setOutput}
+              error={null}
+              setError={null}
+              format={Formats.string}
+            />
           </div>
         </div>
       </section>

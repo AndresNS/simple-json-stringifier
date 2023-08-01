@@ -6,12 +6,13 @@ import BeautifyIcon from "../../icons/BeautifyIcon";
 import ErrorIcon from "../../icons/ErrorIcon";
 import UglifyIcon from "../../icons/UglifyIcon";
 
-interface Props {
+interface IToolbarButtonProps {
   variant: IconVariant;
   error?: boolean;
+  onClick?: () => void;
 }
 
-const ToolbarButton = ({ variant, error }: Props) => {
+const ToolbarButton = ({ variant, error, onClick }: IToolbarButtonProps) => {
   const IconComponents = {
     [IconVariant.beautify]: <BeautifyIcon />,
     [IconVariant.copy]: <CopyIcon />,
@@ -27,6 +28,7 @@ const ToolbarButton = ({ variant, error }: Props) => {
           ? "text-xs rounded-full text-zinc-200 bg-red-700 hover:bg-red-600 dark:bg-red-800 dark:hover:bg-red-700"
           : "rounded hover:bg-slate-400 hover:text-slate-100 dark:hover:bg-slate-600"
       }`}
+      onClick={onClick}
     >
       {IconComponents[variant]}
     </button>

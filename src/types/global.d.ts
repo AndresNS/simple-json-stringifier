@@ -3,6 +3,11 @@ enum ConvertMode {
   StringtoJSON,
 }
 
+enum Formats {
+  json,
+  string,
+}
+
 enum ColorScheme {
   Dark = "dark",
   Light = "light",
@@ -16,4 +21,4 @@ enum IconVariant {
   uglify,
 }
 
-export { ConvertMode, ColorScheme, IconVariant };
+export { ConvertMode, ColorScheme, IconVariant, Formats };
