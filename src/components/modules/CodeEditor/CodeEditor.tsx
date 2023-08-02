@@ -38,7 +38,10 @@ const CodeEditor = ({
 
   const isValidString = (value: string): boolean => {
     try {
-      JSON.parse(value);
+      const parsedString = JSON.parse(value);
+
+      if (parsedString.toString() === "[object Object]")
+        throw Error("Expected a stringified JSON, but received a JSON object");
     } catch (error: any) {
       setErrorMessage(error.toString());
       return false;
@@ -74,6 +77,7 @@ const CodeEditor = ({
         error={error !== null && content !== "" ? error : false}
         errorMessage={errorMessage}
         isOutput={isOutput()}
+        convertMode={convertMode}
       />
       <textarea
         className="w-full resize-none	bg-neutral-white dark:bg-zinc-800 rounded-b-xl p-4"

@@ -1,5 +1,5 @@
 import ToolbarButton from "./ToolbarButton";
-import { IconVariant } from "@/types/global.d";
+import { ConvertMode, IconVariant } from "@/types/global.d";
 import Tooltip from "@/components/modules/Tooltip";
 import Popover from "@/components/modules/Popover";
 
@@ -10,6 +10,7 @@ interface IToolbarProps {
   error: boolean;
   isOutput: boolean;
   errorMessage: string;
+  convertMode: ConvertMode;
 }
 
 const Toolbar = ({
@@ -19,6 +20,7 @@ const Toolbar = ({
   error,
   isOutput,
   errorMessage,
+  convertMode,
 }: IToolbarProps) => {
   const handleBeautifyClick = (): void => {
     if (error) "Fix errors first";
@@ -48,7 +50,7 @@ const Toolbar = ({
             </Popover>
           </div>
         )}
-        {!isOutput && (
+        {!isOutput && convertMode === ConvertMode.JSONtoString && (
           <>
             <Tooltip text={"Beautify"}>
               <ToolbarButton
@@ -62,6 +64,10 @@ const Toolbar = ({
                 onClick={handleUglifyClick}
               />
             </Tooltip>
+          </>
+        )}
+        {!isOutput && (
+          <>
             <Tooltip text={"Clear"}>
               <ToolbarButton
                 variant={IconVariant.delete}

@@ -21,12 +21,17 @@ C: Correcciones de bugs de la serie B.
 
 - Added error details.
 - Added button to toggle between JSON to String and String to JSON.
+- Added toolbar with the following buttons:
+  - Beautify: In JSON to String mode, formats JSON.
+  - Uglify: In JSON to String mode, removes indentation and extra spaces.
+  - Clear: Deletes content.
+  - Copy: Copies content to clipboard.
 
 ### Changed
 
 - Implemented new UI design.
 - Changed title from "Simple JSON Stringify" to "Simple JSON Stringifier".
-- Improveed mobile version.
+- Improved mobile version.
 
 # Fixed
 
