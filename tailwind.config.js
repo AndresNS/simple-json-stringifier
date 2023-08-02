@@ -8,6 +8,7 @@ module.exports = {
   theme: {
     fontFamily: {
       roboto: ["Roboto", "sans-serif"],
+      mono: ["JetBrains Mono", "monospace"],
     },
     extend: {
       backgroundImage: {

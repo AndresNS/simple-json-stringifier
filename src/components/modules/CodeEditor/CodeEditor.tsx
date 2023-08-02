@@ -80,7 +80,7 @@ const CodeEditor = ({
         convertMode={convertMode}
       />
       <textarea
-        className="w-full resize-none	bg-neutral-white dark:bg-zinc-800 rounded-b-xl p-4"
+        className="font-mono w-full resize-none	bg-neutral-white dark:bg-zinc-800 rounded-b-xl p-4"
         rows={20}
         spellCheck={false}
         value={content}
