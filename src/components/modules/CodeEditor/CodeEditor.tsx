@@ -1,5 +1,10 @@
 import { useState, Dispatch, SetStateAction } from "react";
 
+import Editor from "react-simple-code-editor";
+
+import * as Prism from "prismjs";
+import "prismjs/components/prism-json";
+
 import { Formats, ConvertMode } from "@/types/global.d";
 
 import Toolbar from "./Toolbar";
@@ -57,11 +62,9 @@ const CodeEditor = ({
       setError?.(!isValidString(input));
   };
 
-  const handleTextAreaChange = (
-    event: React.ChangeEvent<HTMLTextAreaElement>
-  ): void => {
-    validateInput(event.target.value, convertMode);
-    setContent?.(event.target.value);
+  const handleEditorChange = (value: string): void => {
+    validateInput(value, convertMode);
+    setContent?.(value);
   };
 
   const isOutput = (): boolean =>
@@ -69,7 +72,7 @@ const CodeEditor = ({
     (convertMode === ConvertMode.StringtoJSON && format === Formats.json);
 
   return (
-    <div className="drop-shadow-md">
+    <div className="drop-shadow-md ">
       <Toolbar
         title={title}
         content={content}
@@ -79,14 +82,20 @@ const CodeEditor = ({
         isOutput={isOutput()}
         convertMode={convertMode}
       />
-      <textarea
-        className="font-mono w-full resize-none	bg-neutral-white dark:bg-zinc-800 rounded-b-xl p-4"
-        rows={20}
-        spellCheck={false}
-        value={content}
-        onChange={handleTextAreaChange}
-        readOnly={isOutput()}
-      />
+
+      <div className="font-mono bg-slate-100 dark:bg-zinc-800 rounded-b-xl min-h-[30rem] h-[50vh] overflow-auto">
+        <Editor
+          disabled={isOutput()}
+          value={content}
+          onValueChange={(value) => handleEditorChange(value)}
+          highlight={(value) =>
+            Prism.highlight(value, Prism.languages.json, "json")
+          }
+          padding={16}
+          textareaClassName="code-editor-area"
+          style={{ minHeight: "100%", maxWidth: "100%", overflow: "auto" }}
+        />
+      </div>
     </div>
   );
 };
