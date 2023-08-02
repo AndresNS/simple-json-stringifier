@@ -26,6 +26,7 @@ C: Correcciones de bugs de la serie B.
   - Uglify: In JSON to String mode, removes indentation and extra spaces.
   - Clear: Deletes content.
   - Copy: Copies content to clipboard.
+- Added JSON linting.
 
 ### Changed
 

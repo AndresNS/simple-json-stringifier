@@ -41,8 +41,8 @@ export default function Home() {
   return (
     <Layout>
       <section className="container p-6 mx-auto flex flex-col justify-center">
-        <div className="flex gap-4 items-center flex-col lg:flex-row">
-          <div className="flex-1 w-full">
+        <div className="flex gap-4 flex-col lg:items-center  lg:flex-row">
+          <div className="flex-1 overflow-auto">
             <CodeEditor
               title={
                 convertMode === ConvertMode.JSONtoString
@@ -67,9 +67,9 @@ export default function Home() {
               onClick={() => toggleConvertMode(convertMode)}
             >
               <SwapIcon />
-            </button>{" "}
+            </button>
           </Tooltip>
-          <div className="flex-1  w-full">
+          <div className="flex-1 overflow-auto">
             <CodeEditor
               title={
                 convertMode === ConvertMode.StringtoJSON
