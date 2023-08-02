@@ -72,7 +72,7 @@ const CodeEditor = ({
     (convertMode === ConvertMode.StringtoJSON && format === Formats.json);
 
   return (
-    <div className="drop-shadow-md ">
+    <div className="">
       <Toolbar
         title={title}
         content={content}

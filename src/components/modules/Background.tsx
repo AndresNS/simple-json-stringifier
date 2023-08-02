@@ -2,14 +2,14 @@ import { PropsWithChildren } from "react";
 
 const Background = ({ children }: PropsWithChildren) => {
   return (
-    <div className="bg-neutral-50 dark:bg-slate-800 relative overflow-hidden ">
+    <div className="bg-slate-300 dark:bg-slate-800 relative overflow-hidden ">
       <svg
         width="678"
         height="700"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
         stroke="none"
-        className="text-teal-50 dark:text-teal-600/70 w-1/2 absolute bottom-[-20%] left-[10%] blur-[8rem] "
+        className="text-cyan-50/10 dark:text-teal-600/70 w-1/2 absolute bottom-[-20%] left-[10%] blur-[8rem] "
       >
         <path
           fillRule="evenodd"
@@ -38,7 +38,7 @@ const Background = ({ children }: PropsWithChildren) => {
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
         stroke="none"
-        className="text-purple-50 dark:text-slate-900/50 w-1/2 absolute blur-[8rem] "
+        className="text-purple-50/30 dark:text-slate-900/50 w-1/2 absolute blur-[8rem] "
       >
         <path
           fillRule="evenodd"

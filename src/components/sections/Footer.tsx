@@ -7,7 +7,6 @@ const Footer = () => {
       <nav className="flex gap-4">
         <Link href="/">Home</Link>
         <Link href="/about">About</Link>
-        <Link href="/license">License</Link>
       </nav>
       <a
         href="https://github.com/AndresNS/simple-json-stringifier"
