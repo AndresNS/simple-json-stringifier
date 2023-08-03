@@ -15,6 +15,12 @@ B: Nuevas características, nuevas funcionalidades y conjunto de grandes correcc
 C: Correcciones de bugs de la serie B.
 -->
 
+## [2.1.1] 03/08/2023
+
+### Fixed
+
+- Fixed bug with dark mode where dark mode was set by default, but the toggle theme icon was set to light mode.
+
 ## [2.1.0] 03/08/2023
 
 ### Added
