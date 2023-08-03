@@ -4,7 +4,7 @@ import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
 import Background from "../modules/Background";
 
-const Layout = ({ children }: PropsWithChildren) => {
+const Layout = ({ children }: PropsWithChildren): JSX.Element => {
   return (
     <Background>
       <div className="flex flex-col min-h-screen">

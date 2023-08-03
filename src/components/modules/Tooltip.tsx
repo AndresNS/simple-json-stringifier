@@ -1,6 +1,11 @@
 import * as BaseTooltip from "@radix-ui/react-tooltip";
 
-const Tooltip = ({ children, text }) => {
+interface ITooltipProps {
+  children: React.ReactNode;
+  text: string;
+}
+
+const Tooltip = ({ children, text }: ITooltipProps): JSX.Element => {
   return (
     <BaseTooltip.Provider delayDuration={200}>
       <BaseTooltip.Root>

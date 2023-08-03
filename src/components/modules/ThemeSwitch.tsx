@@ -3,7 +3,7 @@ import { useTheme } from "next-themes";
 import MoonIcon from "../icons/MoonIcon";
 import SunIcon from "../icons/SunIcon";
 
-const ThemeSwitch = () => {
+const ThemeSwitch = (): JSX.Element | null => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 

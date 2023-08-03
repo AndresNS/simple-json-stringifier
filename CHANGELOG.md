@@ -15,6 +15,20 @@ B: Nuevas características, nuevas funcionalidades y conjunto de grandes correcc
 C: Correcciones de bugs de la serie B.
 -->
 
+## [2.1.0] 03/08/2023
+
+### Added
+
+- Added 404 page.
+
+### Changed
+
+- Added typescript missing types in some functions and components.
+
+### Fixed
+
+- Fixed typescript error with prismjs.
+
 ## [2.0.0] 02/08/2023
 
 ### Added
