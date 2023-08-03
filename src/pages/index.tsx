@@ -1,105 +1,91 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import Layout from "@/components/layouts/Default";
-// import { ConvertMode } from "../types/global.d";
+import { ConvertMode, Formats } from "@/types/global.d";
+
+import CodeEditor from "@/components/modules/CodeEditor/CodeEditor";
+import SwapIcon from "@/components/icons/SwapIcon";
+import Tooltip from "@/components/modules/Tooltip";
 
 export default function Home() {
-  // const [convertMode, setConvertMode] = useState(ConvertMode.JSONtoString);
   const [input, setInput] = useState("");
-  const [output, setOutput] = useState("");
-  const [error, setError] = useState("");
+  const [inputError, setInputError] = useState(false);
+  const [convertMode, setConvertMode] = useState(ConvertMode.JSONtoString);
 
-  useEffect(() => {
-    if (input !== "" && !validateJSON(input))
-      return setError("Not a valid JSON");
-    setOutput(JSON.stringify(input));
-    setError("");
-  }, [input]);
+  const getOutputContent = (
+    input: string,
+    convertMode: ConvertMode,
+    error: boolean
+  ): string => {
+    if (input === "" || error) return "";
 
-  // const toggleConvertMode = (mode: ConvertMode): void => {
-  //   setConvertMode(
-  //     mode === ConvertMode.JSONtoString
-  //       ? ConvertMode.StringtoJSON
-  //       : ConvertMode.JSONtoString
-  //   );
-  // };
+    switch (convertMode) {
+      case ConvertMode.JSONtoString:
+        return JSON.stringify(input);
 
-  // const handleChangeMode = (): void => toggleConvertMode(convertMode);
-
-  const handleInputChange = (
-    event: React.ChangeEvent<HTMLTextAreaElement>
-  ): void => {
-    setInput(event.target.value);
+      case ConvertMode.StringtoJSON:
+        return JSON.parse(input);
+    }
   };
 
-  const validateJSON = (value: string): boolean => {
-    try {
-      JSON.parse(value);
-    } catch {
-      return false;
-    }
-    return true;
+  const toggleConvertMode = (mode: ConvertMode): void => {
+    setInput(getOutputContent(input, mode, inputError));
+
+    setConvertMode(
+      mode === ConvertMode.JSONtoString
+        ? ConvertMode.StringtoJSON
+        : ConvertMode.JSONtoString
+    );
   };
 
   return (
     <Layout>
-      <section className="mt-8 px-8">
-        <div className="container mx-auto">
-          <div className="flex gap-4">
-            <div className="flex-1">
-              <h3 className="mb-2 dark:text-white">JSON</h3>
-              {/* <h3 className="mb-2">
-                {convertMode === ConvertMode.JSONtoString
+      <section className="container p-6 mx-auto flex flex-col justify-center">
+        <div className="flex gap-4 flex-col lg:items-center lg:flex-row">
+          <div className="flex-1 overflow-auto">
+            <CodeEditor
+              title={
+                convertMode === ConvertMode.JSONtoString
                   ? "JSON"
-                  : "Stringified JSON"}
-              </h3> */}
-              {/* <h3 className="mb-2">
-                {convertMode === ConvertMode.JSONtoString
+                  : "Stringified JSON"
+              }
+              content={input}
+              setContent={setInput}
+              error={inputError}
+              setError={setInputError}
+              format={
+                convertMode === ConvertMode.JSONtoString
+                  ? Formats.json
+                  : Formats.string
+              }
+              convertMode={convertMode}
+            />
+          </div>
+          <Tooltip text={"Toggle Mode"}>
+            <button
+              className="w-full lg:w-auto bg-cyan-700 text-slate-100 dark:bg-zinc-900 dark:text-zinc-200 flex justify-center items-center rounded hover:bg-cyan-600 hover:text-slate-100 dark:hover:bg-slate-600 p-2 drop-shadow-md"
+              onClick={() => toggleConvertMode(convertMode)}
+            >
+              <SwapIcon />
+            </button>
+          </Tooltip>
+          <div className="flex-1 overflow-auto">
+            <CodeEditor
+              title={
+                convertMode === ConvertMode.StringtoJSON
                   ? "JSON"
-                  : "Stringified JSON"}
-              </h3> */}
-              <textarea
-                className="w-full rounded p-2 dark:bg-zinc-800 dark:text-white resize-none"
-                rows={20}
-                spellCheck={false}
-                onChange={handleInputChange}
-                value={input}
-              />
-              <p className="dark:text-white">{error}</p>
-            </div>
-            {/* <div className="text-white">
-              <button onClick={handleChangeMode}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"
-                  />
-                </svg>
-              </button>
-            </div> */}
-            <div className="flex-1">
-              <h3 className="mb-2 dark:text-white">Stringified JSON</h3>
-              {/* <h3 className="mb-2">
-                {convertMode === ConvertMode.JSONtoString
-                  ? "Stringified JSON"
-                  : "JSON"}
-              </h3> */}
-              <textarea
-                className="w-full rounded p-2 dark:bg-zinc-800 dark:text-white resize-none"
-                rows={20}
-                spellCheck={false}
-                value={output}
-                readOnly={true}
-              />
-            </div>
+                  : "Stringified JSON"
+              }
+              content={getOutputContent(input, convertMode, inputError)}
+              error={null}
+              setError={null}
+              format={
+                convertMode === ConvertMode.StringtoJSON
+                  ? Formats.json
+                  : Formats.string
+              }
+              convertMode={convertMode}
+            />
           </div>
         </div>
       </section>
