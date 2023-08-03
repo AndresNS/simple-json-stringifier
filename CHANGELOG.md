@@ -27,6 +27,7 @@ C: Correcciones de bugs de la serie B.
   - Clear: Deletes content.
   - Copy: Copies content to clipboard.
 - Added JSON linting.
+- Added About page.
 
 ### Changed
 
