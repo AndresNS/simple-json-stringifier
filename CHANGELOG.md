@@ -15,7 +15,7 @@ B: Nuevas características, nuevas funcionalidades y conjunto de grandes correcc
 C: Correcciones de bugs de la serie B.
 -->
 
-## Unreleased
+## [2.0.0] 02/08/2023
 
 ### Added
 
