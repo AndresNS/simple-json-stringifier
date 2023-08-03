@@ -12,7 +12,11 @@ interface IToolbarButtonProps {
   onClick?: () => void;
 }
 
-const ToolbarButton = ({ variant, error, onClick }: IToolbarButtonProps) => {
+const ToolbarButton = ({
+  variant,
+  error,
+  onClick,
+}: IToolbarButtonProps): JSX.Element => {
   const IconComponents = {
     [IconVariant.beautify]: <BeautifyIcon />,
     [IconVariant.copy]: <CopyIcon />,

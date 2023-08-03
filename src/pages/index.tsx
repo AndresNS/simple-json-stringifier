@@ -1,11 +1,11 @@
 import { useState } from "react";
 
 import Layout from "@/components/layouts/Default";
-import { ConvertMode, Formats } from "@/types/global.d";
-
 import CodeEditor from "@/components/modules/CodeEditor/CodeEditor";
 import SwapIcon from "@/components/icons/SwapIcon";
 import Tooltip from "@/components/modules/Tooltip";
+
+import { ConvertMode, Formats } from "@/types/global.d";
 
 export default function Home() {
   const [input, setInput] = useState("");

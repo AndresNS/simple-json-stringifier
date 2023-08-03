@@ -1,7 +1,7 @@
 import Link from "next/link";
 import GithubIcon from "../icons/GithubIcon";
 
-const Footer = () => {
+const Footer = (): JSX.Element => {
   return (
     <footer className="flex flex-col items-center py-12 gap-4 font-roboto font-bold text-slate-600 dark:text-zinc-200 tracking-wide">
       <nav className="flex gap-4">

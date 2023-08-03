@@ -1,6 +1,6 @@
 import { PropsWithChildren } from "react";
 
-const Background = ({ children }: PropsWithChildren) => {
+const Background = ({ children }: PropsWithChildren): JSX.Element => {
   return (
     <div className="bg-slate-300 dark:bg-slate-800 relative overflow-hidden ">
       <svg

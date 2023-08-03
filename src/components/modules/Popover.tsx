@@ -2,7 +2,12 @@ import { useState } from "react";
 import * as BasePopover from "@radix-ui/react-popover";
 import { sleep } from "@/lib/helpers";
 
-const Popover = ({ children, text }) => {
+interface IPopoverProps {
+  children: React.ReactNode;
+  text: string;
+}
+
+const Popover = ({ children, text }: IPopoverProps): JSX.Element => {
   const [open, setOpen] = useState(false);
 
   const handleMouseEnter = async () => {

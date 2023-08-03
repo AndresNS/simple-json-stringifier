@@ -21,7 +21,7 @@ const Toolbar = ({
   isOutput,
   errorMessage,
   convertMode,
-}: IToolbarProps) => {
+}: IToolbarProps): JSX.Element => {
   const handleBeautifyClick = (): void => {
     if (error) "Fix errors first";
     else
@@ -31,13 +31,17 @@ const Toolbar = ({
       });
   };
 
-  const handleUglifyClick = () => {
+  const handleUglifyClick = (): void => {
     setContent?.(JSON.stringify(JSON.parse(content)));
   };
 
-  const handleDeleteClick = () => setContent?.("");
+  const handleDeleteClick = (): void => {
+    setContent?.("");
+  };
 
-  const handleCopyClick = () => navigator.clipboard.writeText(content);
+  const handleCopyClick = (): void => {
+    navigator.clipboard.writeText(content);
+  };
 
   return (
     <div className="bg-cyan-700 text-slate-100 dark:bg-zinc-900 dark:text-zinc-200 px-6 py-2 rounded-t-xl flex justify-between items-center">

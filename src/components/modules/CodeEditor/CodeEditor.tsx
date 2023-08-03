@@ -27,7 +27,7 @@ const CodeEditor = ({
   setError,
   format,
   convertMode,
-}: ICodeEditorProps) => {
+}: ICodeEditorProps): JSX.Element => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const isValidJSON = (value: string): boolean => {
