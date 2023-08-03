@@ -41,7 +41,7 @@ export default function Home() {
   return (
     <Layout>
       <section className="container p-6 mx-auto flex flex-col justify-center">
-        <div className="flex gap-4 flex-col lg:items-center  lg:flex-row">
+        <div className="flex gap-4 flex-col lg:items-center lg:flex-row">
           <div className="flex-1 overflow-auto">
             <CodeEditor
               title={

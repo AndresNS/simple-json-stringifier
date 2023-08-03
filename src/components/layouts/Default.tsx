@@ -30,7 +30,7 @@ const Layout = ({ children }: PropsWithChildren) => {
           />
         </Head>
         <Header />
-        <div className="flex-1 flex items-center">{children}</div>
+        <div className="flex-1 flex">{children}</div>
         <Footer />
       </div>
     </Background>
