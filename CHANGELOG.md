@@ -35,7 +35,7 @@ C: Correcciones de bugs de la serie B.
 - Changed title from "Simple JSON Stringify" to "Simple JSON Stringifier".
 - Improved mobile version.
 
-# Fixed
+### Fixed
 
 - Fixed bug that causes a flash of light mode when page loads and dark mode is enabled.
 
