@@ -23,8 +23,7 @@ const Toolbar = ({
   convertMode,
 }: IToolbarProps): JSX.Element => {
   const handleBeautifyClick = (): void => {
-    if (error) "Fix errors first";
-    else
+    if (!error)
       setContent?.((content) => {
         const parsedContent = JSON.parse(content);
         return JSON.stringify(parsedContent, null, 4);
