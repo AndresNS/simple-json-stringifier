@@ -3,12 +3,13 @@ import * as BaseTooltip from "@radix-ui/react-tooltip";
 interface ITooltipProps {
   children: React.ReactNode;
   text: string;
+  open?: boolean;
 }
 
-const Tooltip = ({ children, text }: ITooltipProps): JSX.Element => {
+const Tooltip = ({ children, text, open }: ITooltipProps): JSX.Element => {
   return (
     <BaseTooltip.Provider delayDuration={200}>
-      <BaseTooltip.Root>
+      <BaseTooltip.Root open={open}>
         <BaseTooltip.Trigger asChild>
           <div>{children}</div>
         </BaseTooltip.Trigger>
