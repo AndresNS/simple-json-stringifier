@@ -2,6 +2,7 @@ import ToolbarButton from "./ToolbarButton";
 import { ConvertMode, IconVariant } from "@/types/global.d";
 import Tooltip from "@/components/modules/Tooltip";
 import Popover from "@/components/modules/Popover";
+import { useState } from "react";
 
 interface IToolbarProps {
   title: string;
@@ -22,6 +23,8 @@ const Toolbar = ({
   errorMessage,
   convertMode,
 }: IToolbarProps): JSX.Element => {
+  const [copyTooltipOpen, setCopyTooltipOpen] = useState(false);
+
   const handleBeautifyClick = (): void => {
     if (!error)
       setContent?.((content) => {
@@ -39,7 +42,10 @@ const Toolbar = ({
   };
 
   const handleCopyClick = (): void => {
-    navigator.clipboard.writeText(content);
+    navigator.clipboard.writeText(content).then(() => {
+      setCopyTooltipOpen(true);
+      setTimeout(() => setCopyTooltipOpen(false), 2000);
+    });
   };
 
   return (
@@ -80,7 +86,12 @@ const Toolbar = ({
           </>
         )}
         <Tooltip text={"Copy"}>
-          <ToolbarButton variant={IconVariant.copy} onClick={handleCopyClick} />
+          <Tooltip text={"Copied to Clipboard!"} open={copyTooltipOpen}>
+            <ToolbarButton
+              variant={IconVariant.copy}
+              onClick={handleCopyClick}
+            />
+          </Tooltip>
         </Tooltip>
       </div>
     </div>
